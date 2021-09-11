@@ -15,4 +15,20 @@ public class MaktubGoal : MonoBehaviour
     protected Material uncompleteMaterial;
     protected Material completedMaterial;
     protected bool switchedMaterials = false;
+
+
+    protected void setCompleted()
+    {
+        if (isSequenced)
+        {
+            if (prerequisite != null && ((GameObject)prerequisite).GetComponent<MaktubGoal>().completed)
+            {
+                this.completed = true;
+            }
+        }
+        else
+        {
+            this.completed = true;
+        }
+    }
 }

@@ -28,24 +28,13 @@ public class MaktubCollisionGoal : MaktubGoal
     {
         if (collisionInfo.tag == "Robot")
         {
-            if (isSequenced)
-            {
-                if (prerequisite != null && ((GameObject)prerequisite).GetComponent<MaktubGoal>().completed)
-                {
-                    this.completed = true;
-                }
-            }
-            else
-            {
-                this.completed = true;
-            }
-
+            setCompleted();
         }
     }
 }
 
 [CustomEditor(typeof(MaktubCollisionGoal))]
-public class MaktubGoalEditor : Editor
+public class MaktubCollisionGoalEditor : Editor
 {
     public override void OnInspectorGUI()
     {
