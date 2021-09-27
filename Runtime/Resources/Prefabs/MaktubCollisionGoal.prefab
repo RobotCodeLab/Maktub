@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6449037860857586398}
   - component: {fileID: 6449037860857586386}
   - component: {fileID: 6449037860857586399}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MaktubCollisionGoal
   m_TagString: Goal
   m_Icon: {fileID: 0}
