@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 
 public class MaktubCollisionGoal : MaktubGoal
 {
@@ -33,6 +33,7 @@ public class MaktubCollisionGoal : MaktubGoal
     }
 }
 
+/*
 [CustomEditor(typeof(MaktubCollisionGoal))]
 public class MaktubCollisionGoalEditor : Editor
 {
@@ -50,3 +51,4 @@ public class MaktubCollisionGoalEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+*/

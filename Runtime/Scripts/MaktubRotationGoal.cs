@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 
 public class MaktubRotationGoal : MaktubGoal
 {
 
-    [HideInInspector]
     public float eulerAngletolernace = 1.0f;
 
     protected GameObject robot;
@@ -47,6 +46,7 @@ public class MaktubRotationGoal : MaktubGoal
 
 }
 
+/*
 [CustomEditor(typeof(MaktubRotationGoal))]
 public class MaktubRotationGoalEditor : Editor
 {
@@ -65,3 +65,4 @@ public class MaktubRotationGoalEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+*/

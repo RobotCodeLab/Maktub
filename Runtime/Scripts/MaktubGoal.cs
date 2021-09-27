@@ -7,12 +7,10 @@ using RosMessageTypes.Std;
 public class MaktubGoal : MonoBehaviour
 {
 
+    public bool isSequenced = false;
+    public Object prerequisite = null;
     [HideInInspector]
     public bool completed = false;
-    [HideInInspector]
-    public bool isSequenced = false;
-    [HideInInspector]
-    public Object prerequisite = null;
 
     protected Material uncompleteMaterial;
     protected Material completedMaterial;
