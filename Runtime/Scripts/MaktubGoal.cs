@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Robotics.ROSTCPConnector;
+using RosMessageTypes.Std;
 
 public class MaktubGoal : MonoBehaviour
 {
@@ -30,5 +32,11 @@ public class MaktubGoal : MonoBehaviour
         {
             this.completed = true;
         }
+        ROSConnection.instance.Send<StringMsg>("maktub/test_log", new StringMsg(completionMessage()));
+    }
+
+    protected string completionMessage()
+    {
+        return "Completed Goal: " + this.gameObject.name;
     }
 }
