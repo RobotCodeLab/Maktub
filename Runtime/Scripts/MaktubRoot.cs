@@ -19,7 +19,7 @@ public class MaktubRoot : MonoBehaviour
     {
         //find all goals in the scene
         goals = GameObject.FindGameObjectsWithTag("Goal");
-        ros = ROSConnection.instance;
+        ros = ROSConnection.GetOrCreateInstance();
         ros.RegisterPublisher<StringMsg>("maktub/test_log");
     }
 
@@ -39,7 +39,7 @@ public class MaktubRoot : MonoBehaviour
             if (complete)
             {
                 testFinished = true;
-                ros.Send<StringMsg>("maktub/test_log", new StringMsg("Test successfully completed"));
+                ros.Publish("maktub/test_log", new StringMsg("Test successfully completed"));
             }
             
             timeSinceLastUpdate = 0;

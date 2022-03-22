@@ -30,7 +30,7 @@ public class MaktubGoal : MonoBehaviour
         {
             this.completed = true;
         }
-        ROSConnection.instance.Send<StringMsg>("maktub/test_log", new StringMsg(completionMessage()));
+        ROSConnection.GetOrCreateInstance().Publish("maktub/test_log", new StringMsg(completionMessage()));
     }
 
     protected string completionMessage()
