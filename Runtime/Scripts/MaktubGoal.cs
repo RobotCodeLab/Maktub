@@ -19,18 +19,13 @@ public class MaktubGoal : MonoBehaviour
 
     protected void setCompleted()
     {
-        if (isSequenced)
+        if (!this.completed &&
+            (!isSequenced ||
+            (prerequisite != null && ((GameObject)prerequisite).GetComponent<MaktubGoal>().completed)))
         {
-            if (prerequisite != null && ((GameObject)prerequisite).GetComponent<MaktubGoal>().completed)
-            {
-                this.completed = true;
-            }
-        }
-        else
-        {
+            ROSConnection.GetOrCreateInstance().Publish("maktub/test_log", new StringMsg(completionMessage()));
             this.completed = true;
         }
-        ROSConnection.GetOrCreateInstance().Publish("maktub/test_log", new StringMsg(completionMessage()));
     }
 
     protected string completionMessage()

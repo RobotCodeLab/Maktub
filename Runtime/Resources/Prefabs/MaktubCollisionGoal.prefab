@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6449037860857586398}
   - component: {fileID: 6449037860857586386}
   - component: {fileID: 6449037860857586399}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: MaktubCollisionGoal
   m_TagString: Goal
   m_Icon: {fileID: 0}
@@ -54,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -125,6 +126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 013af332dac2dfb158e41159f3ac14d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  completed: 0
   isSequenced: 0
   prerequisite: {fileID: 0}
+  completed: 0

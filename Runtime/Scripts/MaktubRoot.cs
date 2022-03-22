@@ -26,6 +26,8 @@ public class MaktubRoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //check our goals to see if we're done with the test
+        //do so only X times per second as defined in the public vars
         timeSinceLastUpdate += Time.deltaTime;
         if (!testFinished && timeSinceLastUpdate > (1 / updatesPerSecond))
         {
