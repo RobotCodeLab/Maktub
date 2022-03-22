@@ -36,6 +36,7 @@ public class MaktubCollisionGoal : MaktubGoal
     }
 }
 
+//custom editor control panel
 #if UNITY_EDITOR
 [CustomEditor(typeof(MaktubCollisionGoal))]
 public class MaktubCollisionGoalEditor : Editor
@@ -43,6 +44,7 @@ public class MaktubCollisionGoalEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("isFailureGoal"));
 
         var mg = target as MaktubCollisionGoal;
         EditorGUILayout.PropertyField(serializedObject.FindProperty("isSequenced"));

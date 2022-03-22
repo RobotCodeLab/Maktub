@@ -9,7 +9,8 @@ public class MaktubRoot : MonoBehaviour
 
     public float updatesPerSecond = 10;
 
-    GameObject[] goals;
+    List<MaktubGoal> successGoals;
+    List<MaktubGoal> failureGoals;
     ROSConnection ros;
 
     private bool testFinished = false;
@@ -18,7 +19,19 @@ public class MaktubRoot : MonoBehaviour
     void Start()
     {
         //find all goals in the scene
-        goals = GameObject.FindGameObjectsWithTag("Goal");
+        GameObject[] goals = GameObject.FindGameObjectsWithTag("Goal");
+        successGoals = new List<MaktubGoal>();
+        failureGoals = new List<MaktubGoal>();
+
+        //split into success and failure goals
+        foreach(GameObject goal in goals)
+        {
+            MaktubGoal mg = goal.GetComponent<MaktubGoal>();
+            if(mg.isFailureGoal)
+                failureGoals.Add(mg);
+            else
+                successGoals.Add(mg);
+        }
         ros = ROSConnection.GetOrCreateInstance();
         ros.RegisterPublisher<StringMsg>("maktub/test_log");
     }
@@ -31,10 +44,22 @@ public class MaktubRoot : MonoBehaviour
         timeSinceLastUpdate += Time.deltaTime;
         if (!testFinished && timeSinceLastUpdate > (1 / updatesPerSecond))
         {
-            bool complete = true;
-            foreach (GameObject goal in goals)
+
+            //check if we failed
+            foreach(MaktubGoal goal in failureGoals)
             {
-                if (!goal.GetComponent<MaktubGoal>().completed)
+                if(goal.completed)
+                {
+                    testFinished = true;
+                    ros.Publish("maktub/test_log", new StringMsg("Test failed"));
+                }
+            }
+
+            //if we didnt fail, lets see if we were successful
+            bool complete = true;
+            foreach (MaktubGoal goal in successGoals)
+            {
+                if (!goal.completed)
                     complete = false;
             }
 

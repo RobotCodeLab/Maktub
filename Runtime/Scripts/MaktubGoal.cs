@@ -6,7 +6,7 @@ using RosMessageTypes.Std;
 
 public class MaktubGoal : MonoBehaviour
 {
-
+    public bool isFailureGoal = false;
     public bool isSequenced = false;
     public Object prerequisite = null;
     [HideInInspector]

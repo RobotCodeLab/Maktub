@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEditor;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class MaktubRotationGoal : MaktubGoal
 {
@@ -46,17 +49,18 @@ public class MaktubRotationGoal : MaktubGoal
 
 }
 
-/*
-[CustomEditor(typeof(MaktubRotationGoal))]
+//custom editor control panel
+#if UNITY_EDITOR
+[CustomEditor(typeof(MaktubCollisionGoal))]
 public class MaktubRotationGoalEditor : Editor
 {
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("isFailureGoal"));
 
-        var mg = target as MaktubRotationGoal;
+        var mg = target as MaktubCollisionGoal;
         EditorGUILayout.PropertyField(serializedObject.FindProperty("isSequenced"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("eulerAngletolernace"));
 
         if (mg.isSequenced)
             EditorGUILayout.PropertyField(serializedObject.FindProperty("prerequisite"));
@@ -65,4 +69,4 @@ public class MaktubRotationGoalEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
-*/
+#endif
