@@ -4,6 +4,10 @@ using UnityEngine;
 using Unity.Robotics.ROSTCPConnector;
 using RosMessageTypes.Std;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 [System.Serializable]
 public enum PrerequisiteOperation
 {
@@ -48,7 +52,7 @@ public class MaktubGoal : MonoBehaviour
 
                 for (int i = 1; i < prerequisites.Count; i++)
                 {
-                    if(prerequisites[i].operation == PrerequisiteOperation.AND)
+                    if (prerequisites[i].operation == PrerequisiteOperation.AND)
                         hasPrereqs = hasPrereqs & ((GameObject)prerequisites[i].goal).GetComponent<MaktubGoal>().completed;
                     else
                         hasPrereqs = hasPrereqs | ((GameObject)prerequisites[i].goal).GetComponent<MaktubGoal>().completed;
@@ -69,4 +73,19 @@ public class MaktubGoal : MonoBehaviour
     {
         return "Completed Goal: " + this.gameObject.name;
     }
+
+    #if UNITY_EDITOR
+    //in the editor, draw a line from this goal to all of its prerequisite goals
+    protected void OnDrawGizmos()
+    {
+        for (int i = 0; i < prerequisites.Count; i++)
+        {
+            Vector3 start = this.transform.position;
+            Vector3 end = ((GameObject)prerequisites[i].goal).transform.position;
+            Color color = prerequisites[i].operation == PrerequisiteOperation.AND ? Color.blue : Color.cyan;
+
+            Handles.DrawBezier(start, end, start, end, color, null, 4);
+        }
+    }
+    #endif
 }
