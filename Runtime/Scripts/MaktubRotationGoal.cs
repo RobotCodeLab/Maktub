@@ -40,6 +40,7 @@ public class MaktubRotationGoal : MaktubGoal
             }
         }
 
+        //change our material to visually indicate completion
         if (this.completed && !this.switchedMaterials)
         {
             this.GetComponent<Renderer>().sharedMaterial = this.completedMaterial;
@@ -63,7 +64,7 @@ public class MaktubCollisionRotationEditor: Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("isSequenced"));
 
         if (mg.isSequenced)
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("prerequisite"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("prerequisites"));
 
 
         serializedObject.ApplyModifiedProperties();
