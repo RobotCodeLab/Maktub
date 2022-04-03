@@ -51,15 +51,15 @@ public class MaktubRotationGoal : MaktubGoal
 
 //custom editor control panel
 #if UNITY_EDITOR
-[CustomEditor(typeof(MaktubCollisionGoal))]
-public class MaktubRotationGoalEditor : Editor
+[CustomEditor(typeof(MaktubRotationGoal))]
+public class MaktubCollisionRotationEditor: Editor
 {
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
         EditorGUILayout.PropertyField(serializedObject.FindProperty("isFailureGoal"));
 
-        var mg = target as MaktubCollisionGoal;
+        var mg = target as MaktubRotationGoal;
         EditorGUILayout.PropertyField(serializedObject.FindProperty("isSequenced"));
 
         if (mg.isSequenced)

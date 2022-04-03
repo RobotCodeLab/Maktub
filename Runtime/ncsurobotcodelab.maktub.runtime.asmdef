@@ -2,7 +2,9 @@
     "name": "com.ncsurobotcodelab.maktub.runtime",
     "rootNamespace": "",
     "references": [
-        "Unity.Robotics.ROSTCPConnector"
+        "Unity.Robotics.ROSTCPConnector",
+        "Unity.Robotics.ROSTCPConnector.Messages",
+        "Unity.Robotics.ROSTCPConnector.MessageGeneration"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

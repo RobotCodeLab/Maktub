@@ -9,7 +9,7 @@
     "changelogUrl": "https://robotcodelab.com",
     "licensesUrl": "https://robotcodelab.com",
     "dependencies": {
-      "com.unity.robotics.ros-tcp-connector": "0.5.0-preview"
+      "com.unity.robotics.ros-tcp-connector": "0.7.0-preview"
    },
    "keywords": [
       "robotics",
