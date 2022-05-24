@@ -8,6 +8,7 @@ using RosMessageTypes.Std;
 using UnityEditor;
 #endif
 
+
 [System.Serializable]
 public enum PrerequisiteOperation
 {
@@ -33,6 +34,9 @@ public class MaktubGoal : MonoBehaviour
     protected Material uncompleteMaterial;
     protected Material completedMaterial;
     protected bool switchedMaterials = false;
+
+    static protected Color ANDColor = new Color(136 / 255.0f, 204 / 255.0f, 238 / 255.0f);
+    static protected Color ORColor = new Color(221 / 255.0f, 204 / 255.0f, 119 / 255.0f);
 
     void Start()
     {
@@ -82,7 +86,7 @@ public class MaktubGoal : MonoBehaviour
         {
             Vector3 start = this.transform.position;
             Vector3 end = ((GameObject)prerequisites[i].goal).transform.position;
-            Color color = prerequisites[i].operation == PrerequisiteOperation.AND ? Color.blue : Color.cyan;
+            Color color = prerequisites[i].operation == PrerequisiteOperation.AND ? ANDColor : ORColor;
 
             Handles.DrawBezier(start, end, start, end, color, null, 4);
         }
